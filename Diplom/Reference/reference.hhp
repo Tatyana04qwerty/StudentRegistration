@@ -1,0 +1,27 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=reference.chm
+Contents file=Table of Contents.hhc
+Default topic=О справке.htm
+Display compile progress=No
+Full text search stop list file=search.stp
+Full-text search=Yes
+Index file=Index.hhk
+Language=0x419 Русский (Россия)
+Title=Помощь
+
+
+[FILES]
+Аккаунт.htm
+Добавление и редактирование групп.htm
+Добавление и редактирование специальностей.htm
+Добавление пользователей.htm
+Добавление студентов.htm
+О справке.htm
+Переключение между списками групп.htm
+Переключение между списками.htm
+Редактирование данных о студенте.htm
+Трудоустройство.htm
+
+[INFOTYPES]
+

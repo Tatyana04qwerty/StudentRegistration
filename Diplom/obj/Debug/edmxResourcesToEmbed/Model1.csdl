@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Contingent1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Группы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НомерГруппы" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="КлассныйРуководитель" Type="Int32" />
+    <Property Name="Примечание" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Пользователи" Relationship="Self.FK__Группы__Классный__76969D2E" FromRole="Группы" ToRole="Пользователи" />
+    <NavigationProperty Name="Студенты" Relationship="Self.FK__Студенты__Группа__7D439ABD" FromRole="Группы" ToRole="Студенты" />
+  </EntityType>
+  <EntityType Name="ДвижениеКонтингента">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КодПриказа" Type="Int32" Nullable="false" />
+    <Property Name="КодСтудента" Type="Int32" Nullable="false" />
+    <Property Name="Примечание" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Документы" Relationship="Self.FK__ДвижениеК__КодПр__04E4BC85" FromRole="ДвижениеКонтингента" ToRole="Документы" />
+    <NavigationProperty Name="Студенты" Relationship="Self.FK__ДвижениеК__КодСт__05D8E0BE" FromRole="ДвижениеКонтингента" ToRole="Студенты" />
+  </EntityType>
+  <EntityType Name="Документы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НомерПриказа" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ДатаПриказа" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Примечание" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ДвижениеКонтингента" Relationship="Self.FK__ДвижениеК__КодПр__04E4BC85" FromRole="Документы" ToRole="ДвижениеКонтингента" />
+  </EntityType>
+  <EntityType Name="Пользователи">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Логин" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Пароль" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Фамилия" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Телефон" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Почта" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="КодРоли" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Группы" Relationship="Self.FK__Группы__Классный__76969D2E" FromRole="Пользователи" ToRole="Группы" />
+    <NavigationProperty Name="Роли" Relationship="Self.FK__Пользоват__КодРо__71D1E811" FromRole="Пользователи" ToRole="Роли" />
+  </EntityType>
+  <EntityType Name="Роли">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Роль" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Пользователи" Relationship="Self.FK__Пользоват__КодРо__71D1E811" FromRole="Роли" ToRole="Пользователи" />
+  </EntityType>
+  <EntityType Name="Специальности">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КодСпециальности" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ПолноеНаименование" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="СокращенноеНаименование" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Примечание" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Студенты" Relationship="Self.FK__Студенты__Специа__7F2BE32F" FromRole="Специальности" ToRole="Студенты" />
+  </EntityType>
+  <EntityType Name="Статусы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Статус" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Студенты" Relationship="Self.FK__Студенты__Статус__7E37BEF6" FromRole="Статусы" ToRole="Студенты" />
+  </EntityType>
+  <EntityType Name="Студенты">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Пол" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ДатаРождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Гражданство" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Телефон" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="ДУЛ" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="СерияПаспорта" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="НомерПаспорта" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="КемВыданДУЛ" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ДатаВыдачиДУЛ" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="АдресПостояннойРегистрации" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="СНИЛС" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ИНН" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="СреднийБалл" Type="Double" Nullable="false" />
+    <Property Name="ЯвляетсяСиротой" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ЯвляетсяИнвалидом" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ПричинаИнвалидности" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Специальность" Type="Int32" Nullable="false" />
+    <Property Name="ФормаОбучения" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="БазовоеОбразование" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ВидФинансирования" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Группа" Type="Int32" />
+    <Property Name="Статус" Type="Int32" />
+    <NavigationProperty Name="Группы" Relationship="Self.FK__Студенты__Группа__7D439ABD" FromRole="Студенты" ToRole="Группы" />
+    <NavigationProperty Name="ДвижениеКонтингента" Relationship="Self.FK__ДвижениеК__КодСт__05D8E0BE" FromRole="Студенты" ToRole="ДвижениеКонтингента" />
+    <NavigationProperty Name="Специальности" Relationship="Self.FK__Студенты__Специа__7F2BE32F" FromRole="Студенты" ToRole="Специальности" />
+    <NavigationProperty Name="Статусы" Relationship="Self.FK__Студенты__Статус__7E37BEF6" FromRole="Студенты" ToRole="Статусы" />
+    <NavigationProperty Name="Трудоустройство" Relationship="Self.FK__Трудоустр__КодСт__02084FDA" FromRole="Студенты" ToRole="Трудоустройство" />
+  </EntityType>
+  <EntityType Name="Трудоустройство">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КодСтудента" Type="Int32" Nullable="false" />
+    <Property Name="ДатаТрудоустройства" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ДатаУвольнения" Type="DateTime" Precision="0" />
+    <Property Name="Предприятие" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Местонахождение" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Примечание" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Студенты" Relationship="Self.FK__Трудоустр__КодСт__02084FDA" FromRole="Трудоустройство" ToRole="Студенты" />
+  </EntityType>
+  <Association Name="FK__Группы__Классный__76969D2E">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="0..1" />
+    <End Role="Группы" Type="Self.Группы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Группы">
+        <PropertyRef Name="КлассныйРуководитель" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Студенты__Группа__7D439ABD">
+    <End Role="Группы" Type="Self.Группы" Multiplicity="0..1" />
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Группы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Студенты">
+        <PropertyRef Name="Группа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ДвижениеК__КодПр__04E4BC85">
+    <End Role="Документы" Type="Self.Документы" Multiplicity="1" />
+    <End Role="ДвижениеКонтингента" Type="Self.ДвижениеКонтингента" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Документы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ДвижениеКонтингента">
+        <PropertyRef Name="КодПриказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ДвижениеК__КодСт__05D8E0BE">
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="1" />
+    <End Role="ДвижениеКонтингента" Type="Self.ДвижениеКонтингента" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Студенты">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ДвижениеКонтингента">
+        <PropertyRef Name="КодСтудента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Пользоват__КодРо__71D1E811">
+    <End Role="Роли" Type="Self.Роли" Multiplicity="1" />
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Роли">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Пользователи">
+        <PropertyRef Name="КодРоли" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Студенты__Специа__7F2BE32F">
+    <End Role="Специальности" Type="Self.Специальности" Multiplicity="1" />
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Специальности">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Студенты">
+        <PropertyRef Name="Специальность" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Студенты__Статус__7E37BEF6">
+    <End Role="Статусы" Type="Self.Статусы" Multiplicity="0..1" />
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статусы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Студенты">
+        <PropertyRef Name="Статус" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трудоустр__КодСт__02084FDA">
+    <End Role="Студенты" Type="Self.Студенты" Multiplicity="1" />
+    <End Role="Трудоустройство" Type="Self.Трудоустройство" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Студенты">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Трудоустройство">
+        <PropertyRef Name="КодСтудента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Contingent1Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Группы" EntityType="Self.Группы" />
+    <EntitySet Name="ДвижениеКонтингента" EntityType="Self.ДвижениеКонтингента" />
+    <EntitySet Name="Документы" EntityType="Self.Документы" />
+    <EntitySet Name="Пользователи" EntityType="Self.Пользователи" />
+    <EntitySet Name="Роли" EntityType="Self.Роли" />
+    <EntitySet Name="Специальности" EntityType="Self.Специальности" />
+    <EntitySet Name="Статусы" EntityType="Self.Статусы" />
+    <EntitySet Name="Студенты" EntityType="Self.Студенты" />
+    <EntitySet Name="Трудоустройство" EntityType="Self.Трудоустройство" />
+    <AssociationSet Name="FK__Группы__Классный__76969D2E" Association="Self.FK__Группы__Классный__76969D2E">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Группы" EntitySet="Группы" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Студенты__Группа__7D439ABD" Association="Self.FK__Студенты__Группа__7D439ABD">
+      <End Role="Группы" EntitySet="Группы" />
+      <End Role="Студенты" EntitySet="Студенты" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ДвижениеК__КодПр__04E4BC85" Association="Self.FK__ДвижениеК__КодПр__04E4BC85">
+      <End Role="Документы" EntitySet="Документы" />
+      <End Role="ДвижениеКонтингента" EntitySet="ДвижениеКонтингента" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ДвижениеК__КодСт__05D8E0BE" Association="Self.FK__ДвижениеК__КодСт__05D8E0BE">
+      <End Role="Студенты" EntitySet="Студенты" />
+      <End Role="ДвижениеКонтингента" EntitySet="ДвижениеКонтингента" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Пользоват__КодРо__71D1E811" Association="Self.FK__Пользоват__КодРо__71D1E811">
+      <End Role="Роли" EntitySet="Роли" />
+      <End Role="Пользователи" EntitySet="Пользователи" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Студенты__Специа__7F2BE32F" Association="Self.FK__Студенты__Специа__7F2BE32F">
+      <End Role="Специальности" EntitySet="Специальности" />
+      <End Role="Студенты" EntitySet="Студенты" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Студенты__Статус__7E37BEF6" Association="Self.FK__Студенты__Статус__7E37BEF6">
+      <End Role="Статусы" EntitySet="Статусы" />
+      <End Role="Студенты" EntitySet="Студенты" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трудоустр__КодСт__02084FDA" Association="Self.FK__Трудоустр__КодСт__02084FDA">
+      <End Role="Студенты" EntitySet="Студенты" />
+      <End Role="Трудоустройство" EntitySet="Трудоустройство" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

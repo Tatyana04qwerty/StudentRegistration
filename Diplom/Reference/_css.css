@@ -1,0 +1,33 @@
+BODY
+{
+    BACKGROUND: #ffffff;
+    WIDTH: 100%;
+    MARGIN: 0px;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+}
+#banner
+{
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-TOP: 0px;
+    PADDING-BOTTOM: 0px;
+    background: #CFFFEE;
+    text-indent: 40px;
+    line-height: 60px;
+}
+P
+{
+    FONT-SIZE: 14pt;
+    margin-left: 30px;
+    margin-right: 30px;
+    text-indent: 30px;
+}
+H3
+{
+    text-indent: 40px;
+}
+HR
+{
+    color: #BFEEE2;
+}

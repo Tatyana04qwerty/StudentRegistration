@@ -1,0 +1,472 @@
+﻿<Window x:Class="Diplom.MyGroupsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="MyGroupsWindow" Height="830" Width="1600" Closing="Window_Closing">
+    <Grid Style="{StaticResource Back}">
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="Аккаунт">
+                <MenuItem Header="Просмотр" Name="btnProfile"/>
+                <MenuItem Header="Выход" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Классное руководство">
+                <MenuItem Header="Обучающиеся группы" Name="btnAllStudents" Click="Students_Click"/>
+                <MenuItem Header="Выпущенные группы" Name="btnGraduates" Click="Graduates_Click"/>
+                <MenuItem Header="История трудоустройства" Click="EmploymentHistory_Click"/>
+            </MenuItem>
+            <MenuItem Header="Справка" Click="Help_Click"/>
+        </Menu>
+
+        <Grid x:Name="studentsGrid" Visibility="Visible">
+            <StackPanel x:Name="students" Margin="30 20 30 10" Orientation="Vertical">
+                <StackPanel x:Name="search" Orientation="Horizontal">
+                    <Image Source="\Resources\icons\iconMagnifier.png" Width="20"/>
+                    <TextBox x:Name="tbSearch" Margin="5" Style="{StaticResource Search}" TextChanged="TbSearch_TextChanged"/>
+                </StackPanel>
+                <WrapPanel x:Name="sortAndFilter" Orientation="Horizontal">
+                    <WrapPanel Orientation="Vertical">
+                        <WrapPanel Orientation="Horizontal">
+                            <Button Name="btnFilter" Content="Отобрать" Margin="5" HorizontalAlignment="Left" Click="Sort_Click"/>
+                            <Button Name="btnClear" Content="Сбросить настройки" Click="Clear_Click"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Horizontal">
+                            <WrapPanel Orientation="Vertical">
+                                <Label Content="Сортировка" Style="{StaticResource LittleLabel}"/>
+                                <ComboBox Name="CbSortDir" Margin="5" IsEditable="True" Text="Направление сортировки"/>
+                                <ComboBox Name="CbSortField" Margin="5" IsEditable="True" Text="Поле для сортировки"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Vertical">
+                                <Label Content="Фильтрация" Style="{StaticResource LittleLabel}"/>
+                                <WrapPanel Orientation="Vertical" Height="130">
+                                    <ComboBox Name="CbFilterGender" Margin="5" IsEditable="True" Text="Пол"/>
+                                    <ComboBox Name="CbFilterAge" Margin="5" IsEditable="True" Text="Возраст"/>
+                                    <ComboBox Name="CbFilterTown" Margin="5" IsEditable="True" Text="Город"/>
+                                    <ComboBox Name="CbFilterGroup" Margin="5" IsEditable="True" SelectedIndex="0"/>
+                                    <ComboBox Name="CbFilterTypeOfFinancing" Margin="5" IsEditable="True" Text="Вид финансирования"/>
+                                    <ComboBox Name="CbFilterEmployment" Margin="5" IsEditable="True" Text="Трудоустройство"/>
+                                </WrapPanel>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Vertical" Margin="5">
+                        <Button Name="btnSave" Content="Сохранить список" Click="Save_Click"/>
+                    </WrapPanel>
+                </WrapPanel>
+                
+                <ListView x:Name="dgStudents" SelectionChanged="OnSelectionChanged" MaxHeight="490" d:ItemsSource="{d:SampleData ItemCount=15}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="115" Header="ФИО">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Surname}" FontSize="12"/>
+                                            <TextBlock Text=" " FontSize="12"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="12"/>
+                                            <TextBlock Text=" " FontSize="12"/>
+                                            <TextBlock Text="{Binding Patronymic}" FontSize="12"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="110" Header="Дата Рождения">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DateOfBirth, StringFormat=dd.MM.yyy}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="50" Header="Возраст">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Age}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Контактные данные">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Orientation="Vertical">
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="Телефон: " FontSize="12"/>
+                                                <TextBlock Text="{Binding Phone}" FontSize="12"/>
+                                            </WrapPanel>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="Почта: " FontSize="12"/>
+                                                <TextBlock Text="{Binding Email}" FontSize="12"/>
+                                            </WrapPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Паспорт">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Orientation="Vertical">
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding PassportSeries}" FontSize="12"/>
+                                                <TextBlock Text=" " FontSize="12"/>
+                                                <TextBlock Text="{Binding PassportNumber}" FontSize="12"/>
+                                            </WrapPanel>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="От " FontSize="12"/>
+                                                <TextBlock Text="{Binding DateOfIssue, StringFormat=dd.MM.yyy}" FontSize="12"/>
+                                            </WrapPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Адрес">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PermanentRegistrationAddress}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="СНИЛС">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding IIAN}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="ИНН">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ITN}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Средний балл">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding GPA, StringFormat={}{0:0.00}}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Сиротство">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding IfOrphan}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Инвалидность">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding IfInvalid}" FontSize="12"/>
+                                            <TextBlock Text=" " FontSize="12"/>
+                                            <TextBlock Text="{Binding ПричинаИнвалидности}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Форма обучения">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding FormOfStudy}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Базовое образование">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding BasicEducation}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Вид финансирования">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TypeOfFinancing}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="160" Header="Специальность">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Specialities.SpecialityCode}" FontSize="12"/>
+                                            <TextBlock Text="{Binding Specialities.SpecialityName}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Группа">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Groups.GroupNumber}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Трудоустройство">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Statuses.IfEmployed}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Статус">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Statuses.Status}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Примечания">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Note}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Button Name="btnEditGraduates" Style="{StaticResource ListViewButton}" Content="Трудоустройство" Margin="2" Click="EditEmployment_Click"/>
+                                            <Button Name="btnEditStudent" Style="{StaticResource ListViewButton}" Content="Редактировать" Margin="2" Click="EditStudent_Click"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <WrapPanel>
+                    <Label Name="lbCount" Content="Количество записей: 0" Style="{StaticResource LittleLabel}"/>
+                    <Label Name="lbSelected" Content="Выбрано: 0" Style="{StaticResource LittleLabel}"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="graduatesGrid" Visibility="Hidden">
+            <StackPanel x:Name="graduates" Margin="30 20 30 10" Orientation="Vertical">
+                <StackPanel x:Name="searchGraduates" Orientation="Horizontal">
+                    <Image Source="\Resources\icons\iconMagnifier.png" Width="20"/>
+                    <TextBox x:Name="tbSearchGraduates" Margin="5" Style="{StaticResource Search}" TextChanged="TbSearchGraduates_TextChanged"/>
+                </StackPanel>
+                <WrapPanel x:Name="sortAndFilterGraduates" Orientation="Horizontal">
+                    <WrapPanel Orientation="Vertical">
+                        <WrapPanel Orientation="Horizontal">
+                            <Button Name="btnFilterGraduates" Content="Отобрать" Margin="5" HorizontalAlignment="Left" Click="SortGraduates_Click"/>
+                            <Button Name="btnClearGraduates" Content="Сбросить настройки" Click="ClearGraduates_Click"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Horizontal">
+                            <WrapPanel Orientation="Vertical">
+                                <Label Content="Сортировка" Style="{StaticResource LittleLabel}"/>
+                                <ComboBox Name="CbSortDirGraduates" Margin="5" IsEditable="True" Text="Направление сортировки"/>
+                                <ComboBox Name="CbSortFieldGraduates" Margin="5" IsEditable="True" Text="Поле для сортировки"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Vertical">
+                                <Label Content="Фильтрация" Style="{StaticResource LittleLabel}"/>
+                                <WrapPanel Orientation="Vertical" Height="130">
+                                    <ComboBox Name="CbFilterGenderGraduates" Margin="5" IsEditable="True" Text="Пол"/>
+                                    <ComboBox Name="CbFilterAgeGraduates" Margin="5" IsEditable="True" Text="Возраст"/>
+                                    <ComboBox Name="CbFilterTownGraduates" Margin="5" IsEditable="True" Text="Город"/>
+                                    <ComboBox Name="CbFilterGroupGraduates" Margin="5" IsEditable="True" SelectedIndex="0"/>
+                                    <ComboBox Name="CbFilterTypeOfFinancingGraduates" Margin="5" IsEditable="True" Text="Вид финансирования"/>
+                                    <ComboBox Name="CbFilterEmploymentGraduates" Margin="5" IsEditable="True" Text="Трудоустройство"/>
+                                </WrapPanel>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Vertical" Margin="5">
+                        <Button Name="btnSaveGraduates" Content="Сохранить список" Click="SaveGraduates_Click"/>
+                    </WrapPanel>
+                </WrapPanel>
+
+                <ListView x:Name="dgGraduates" SelectionChanged="OnSelectionChangedGraduates" MaxHeight="490" d:ItemsSource="{d:SampleData ItemCount=15}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="115" Header="ФИО">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Surname}" FontSize="12"/>
+                                            <TextBlock Text=" " FontSize="12"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="12"/>
+                                            <TextBlock Text=" " FontSize="12"/>
+                                            <TextBlock Text="{Binding Patronymic}" FontSize="12"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="110" Header="Дата Рождения">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DateOfBirth, StringFormat=dd.MM.yyy}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="50" Header="Возраст">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Age}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Контактные данные">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Orientation="Vertical">
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="Телефон: " FontSize="12"/>
+                                                <TextBlock Text="{Binding Phone}" FontSize="12"/>
+                                            </WrapPanel>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="Почта: " FontSize="12"/>
+                                                <TextBlock Text="{Binding Email}" FontSize="12"/>
+                                            </WrapPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Паспорт">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Orientation="Vertical">
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding PassportSeries}" FontSize="12"/>
+                                                <TextBlock Text=" " FontSize="12"/>
+                                                <TextBlock Text="{Binding PassportNumber}" FontSize="12"/>
+                                            </WrapPanel>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="От " FontSize="12"/>
+                                                <TextBlock Text="{Binding DateOfIssue, StringFormat=dd.MM.yyy}" FontSize="12"/>
+                                            </WrapPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Адрес">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PermanentRegistrationAddress}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="СНИЛС">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding IIAN}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="ИНН">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ITN}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Средний балл">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding GPA, StringFormat={}{0:0.00}}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Сиротство">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding IfOrphan}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Инвалидность">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding IfInvalid}" FontSize="12"/>
+                                            <TextBlock Text=" " FontSize="12"/>
+                                            <TextBlock Text="{Binding ПричинаИнвалидности}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Форма обучения">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding FormOfStudy}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Базовое образование">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding BasicEducation}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Вид финансирования">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TypeOfFinancing}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="160" Header="Специальность">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Specialities.SpecialityCode}" FontSize="12"/>
+                                            <TextBlock Text="{Binding Specialities.SpecialityName}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Группа">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Groups.GroupNumber}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Трудоустройство">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Statuses.IfEmployed}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Статус">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Statuses.Status}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="auto" Header="Примечания">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Note}" FontSize="12"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Button Name="btnEditGraduates" Style="{StaticResource ListViewButton}" Content="Трудоустройство" Margin="2" Click="EditEmployment_Click"/>
+                                            <Button Name="btnEditStudent" Style="{StaticResource ListViewButton}" Content="Редактировать" Margin="2" Click="EditStudent_Click"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <WrapPanel>
+                    <Label Name="lbCountGraduates" Content="Количество записей: 0" Style="{StaticResource LittleLabel}"/>
+                    <Label Name="lbSelectedGraduates" Content="Выбрано: 0" Style="{StaticResource LittleLabel}"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

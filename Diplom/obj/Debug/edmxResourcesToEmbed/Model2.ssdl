@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище testDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Документы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерПриказа" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ДатаПриказа" Type="date" Nullable="false" />
+    <Property Name="Файл" Type="varchar(max)" />
+    <Property Name="Примечание" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Студенты">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Имя" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Фамилия" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Отчество" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Пол" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ДатаРождения" Type="date" Nullable="false" />
+    <Property Name="Гражданство" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Телефон" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ДУЛ" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="СерияПаспорта" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="НомерПаспорта" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="КемВыданДУЛ" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ДатаВыдачиДУЛ" Type="date" Nullable="false" />
+    <Property Name="АдресПостояннойРегистрации" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="СНИЛС" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ИНН" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="СреднийБалл" Type="float" Nullable="false" />
+    <Property Name="ЯвляетсяСиротой" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ЯвляетсяИнвалидом" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ПричинаИнвалидности" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Специальность" Type="int" Nullable="false" />
+    <Property Name="ФормаОбучения" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="БазовоеОбразование" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ВидФинансирования" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Группа" Type="int" />
+    <Property Name="Статус" Type="int" />
+  </EntityType>
+  <EntityContainer Name="Хранилище testDBModelContainer">
+    <EntitySet Name="Документы" EntityType="Self.Документы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Студенты" EntityType="Self.Студенты" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

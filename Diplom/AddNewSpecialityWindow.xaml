@@ -1,0 +1,40 @@
+﻿<Window x:Class="Diplom.AddNewSpecialityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Obselete="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Diplom"
+        mc:Ignorable="d"
+        Title="Добавление новой специальности" MinHeight="440" Height="400" MinWidth="500" Width="800">
+    <Grid Style="{StaticResource Back}">
+        <StackPanel Style="{StaticResource Header}">
+            <TextBlock x:Name="tblInfo" Text="Специальность" FontSize="20" Margin="20"/>
+        </StackPanel>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 100 0 0">
+            <WrapPanel Margin="0 0 20 0">
+                <WrapPanel Orientation="Vertical">
+                    <WrapPanel>
+                        <Label Content="Код специальности"/>
+                        <Label Content="*" Foreground="Red"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Content="Полное название специальности"/>
+                        <Label Content="*" Foreground="Red"/>
+                    </WrapPanel>
+                    <Label Content="Аббревиатура специальности" Margin="0 45 0 0"/>
+                </WrapPanel>
+                <WrapPanel Orientation="Vertical">
+                    <Obselete:MaskedTextBox x:Name="tbCode" FontSize="15" MaxLength="10" Text="{Binding SpecialityCode}" Width="160" Height="23" Mask="00/00/00" Margin="5"/>
+                    <TextBox x:Name="tbName" MaxLength="150" Text="{Binding SpecialityName}" Width="160" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" Height="70" TextChanged="tbName_TextChanged" Margin="5"/>
+                    <TextBox x:Name="tbAbbrevaite" MaxLength="10" Text="{Binding AbbreviatedName}" Width="160" Margin="5"/>
+                </WrapPanel>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <Button Name="btnCancel" Content="Отменить" Margin="10" Click="Cancel_Click"/>
+                <Button Name="btnSave" Content="Сохранить" Click="Save_Click"/>
+                <Button Name="btnDelete" Visibility="Hidden" Content="Удалить" Margin="10" Click="Delete_Click"/>
+            </WrapPanel>
+        </WrapPanel>
+    </Grid>
+</Window>

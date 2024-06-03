@@ -1,0 +1,102 @@
+﻿<Window x:Class="Diplom.EmploymentHistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="История трудоустройства" Height="830" Width="1600">
+    <Grid Style="{StaticResource Back}">
+        <StackPanel Margin="15">
+            <StackPanel x:Name="search" Orientation="Horizontal">
+                <Image Source="\Resources\icons\iconMagnifier.png" Width="20"/>
+                <TextBox x:Name="tbSearch" Margin="5" Style="{StaticResource Search}" TextChanged="TbSearch_TextChanged"/>
+            </StackPanel>
+            <WrapPanel x:Name="sortAndFilter" Orientation="Horizontal">
+                <WrapPanel Orientation="Vertical">
+                    <WrapPanel Orientation="Horizontal">
+                        <Button Name="btnFilter" Content="Отобрать" Margin="5" HorizontalAlignment="Left" Click="Sort_Click"/>
+                        <Button Name="btnClear" Content="Сбросить настройки" Click="Clear_Click"/>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <WrapPanel Orientation="Vertical">
+                            <ComboBox Name="CbSort" Margin="5" IsEditable="True" Text="Сортировка"/>
+                        </WrapPanel>
+                        <Label Content="С"/>
+                        <DatePicker Name="dpStart"/>
+                        <Label Content="ПО"/>
+                        <DatePicker Name="dpEnd"/>
+                    </WrapPanel>
+                </WrapPanel>
+                <WrapPanel Orientation="Vertical" Margin="5">
+                    <Button Name="btnSave" Content="Сохранить список" Click="Save_Click"/>
+                </WrapPanel>
+            </WrapPanel>
+            <ListView x:Name="dgEmployment" Margin="10" MaxHeight="550" MaxWidth="1300" d:ItemsSource="{d:SampleData ItemCount=15}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="auto" Header="ФИО">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Students.Surname}" FontSize="12"/>
+                                        <TextBlock Text=" " FontSize="12"/>
+                                        <TextBlock Text="{Binding Students.Name}" FontSize="12"/>
+                                        <TextBlock Text=" " FontSize="12"/>
+                                        <TextBlock Text="{Binding Students.Patronymic}" FontSize="12"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="180" Header="Группа/Специальность">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Students.Groups.GroupNumber}" FontSize="12"/>
+                                        <TextBlock Text="{Binding Students.Specialities.SpecialityName}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Место работы">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Company}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Дата трудоустройства">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding EmploymentDate, StringFormat=dd.MM.yyy}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Дата увольнения">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DateOfDismissal, StringFormat=dd.MM.yyy}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="120" Header="Адрес">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Location}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="250" Header="Описание">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

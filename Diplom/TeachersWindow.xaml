@@ -1,0 +1,83 @@
+﻿<Window x:Class="Diplom.TeachersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom"
+        mc:Ignorable="d"
+        Title="Преподаватели колледжа" Height="550" Width="800">
+    <Grid Style="{StaticResource Back}">
+        <StackPanel x:Name="specialities" Margin="30 10 30 10" Orientation="Vertical">
+            <WrapPanel>
+                <Button Content="Добавить преподавателя" HorizontalAlignment="Left" Margin="0 20 20 20" Click="AddNewTeacher_Click"/>
+                <StackPanel x:Name="search" Orientation="Horizontal">
+                    <Image Source="\Resources\icons\iconMagnifier.png" Width="20"/>
+                    <TextBox x:Name="tbSearch" Margin="5" Style="{StaticResource Search}" TextChanged="TbSearch_TextChanged"/>
+                </StackPanel>
+            </WrapPanel>
+            <ListView x:Name="dgTeachers" MaxHeight="400" d:ItemsSource="{d:SampleData ItemCount=15}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="200" Header="ФИО">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Surname}" FontSize="12"/>
+                                        <TextBlock Text=" " FontSize="12"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="12"/>
+                                        <TextBlock Text=" " FontSize="12"/>
+                                        <TextBlock Text="{Binding Patronymic}" FontSize="12"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Телфеон">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Phone}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Почта">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Email}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Групп в подчинении">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding GroupsAmount}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" Header="Роль">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Roles.RoleName}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="145">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="btnGeneratePass" Style="{StaticResource ListViewButton}" Height="40" Width="120" Margin="2" Click="GenerateNewPassword_Click">
+                                        <TextBlock TextAlignment="Center"> Сгенерировать <LineBreak/> временный пароль</TextBlock>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="125">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Удалить" Name="btnDelete" Style="{StaticResource ListViewButton}" Margin="2" Click="Delete_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

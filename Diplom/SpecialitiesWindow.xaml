@@ -1,0 +1,48 @@
+﻿<Window x:Class="Diplom.SpecialitiesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom"
+        mc:Ignorable="d"
+        Title="Все специальности" Height="400" Width="800">
+    <Grid Style="{StaticResource Back}">
+        <StackPanel x:Name="specialities" Margin="30 10 30 10" Orientation="Vertical">
+            <Button Content="Добавить специальность" HorizontalAlignment="Left" Margin="0 20" Click="AddNewSpeciality_Click"/>
+            <ListView x:Name="dgSpecialities" MaxHeight="250" d:ItemsSource="{d:SampleData ItemCount=15}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="auto" Header="Код специальности">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SpecialityCode}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="350" Header="Название">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SpecialityName}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="100" Header="Аббревиатура">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding AbbreviatedName}" FontSize="12"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="btnEdit" Style="{StaticResource ListViewButton}" Margin="2" Content="Редактировать" Click="Edit_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

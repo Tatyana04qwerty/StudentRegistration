@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Diplom.AddNewGroupWindow" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQIAAAAAAAAAAABAAAgABEAAIAAAAAAABAAAAAA=</HashCode>
+      <FileName>AddNewGroupWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.AddNewSpecialityWindow" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQIAAAAAAAAACABAAAgABEABAAAAAAAABAAAAAA=</HashCode>
+      <FileName>AddNewSpecialityWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.AddStudentWindow" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAACABAAAgSAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>AddStudentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.AddTeacherWindow" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAABABAAAgAAgAAACAIAAABAAoAgAA=</HashCode>
+      <FileName>AddTeacherWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.App" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.AppData" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>AppData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.ChangeCaseOfNames">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAEAAAAAgABAEiAAAAAAEAAAAAAAAAEACBAE=</HashCode>
+      <FileName>ChangeCaseOfNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.EditStudentWindow" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAIAAAAAACABAAAgAAAAAAAAAAAAABQAAACA=</HashCode>
+      <FileName>EditStudentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.EmploymentHistoryWindow" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAUIAAAAAAAAAAAACEAAAAgABAAAAAAAQAQCAAAAAAA=</HashCode>
+      <FileName>EmploymentHistoryWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.EmploymentWindow" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAEAAAAgABgAAAKEAQACABAAAAAA=</HashCode>
+      <FileName>EmploymentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.GenerateNewPasswordWindow" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAABAAAAAAAAAAABAgAAAA=</HashCode>
+      <FileName>GenerateNewPasswordWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.GroupsWindow" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAAICAABAAAAoAAAAAAgAAAAAAAwAQAAEBAAAAAA=</HashCode>
+      <FileName>GroupsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.ImportWindow" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAIAAAAAIAAAAACIAAAAABAACAAACAQAEA=</HashCode>
+      <FileName>ImportWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAACAAAQAAAAAAAAgAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.MyGroupsWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQIAQAAAAAAAAQAAFAAAQgQRAAAAAQAQAADAAICAAA=</HashCode>
+      <FileName>MyGroupsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.ProfileWindow" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAQAAAAgAAAA=</HashCode>
+      <FileName>ProfileWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.SetFormMasterWindow" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAACAAAAAAAAICAAAAAgAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>SetFormMasterWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.SetGroupWindow" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQCAAAAAACAAAABAAAAABAAAAgAEAAAAAAIAAAA=</HashCode>
+      <FileName>SetGroupWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.SpecialitiesWindow" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>SpecialitiesWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.StudentsWindow" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>yBwIBQMAEJRAIABACHACAYgwRgCCAGEAUEqDIEJCB4Q=</HashCode>
+      <FileName>StudentsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.TeachersWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAgAAAAACAAAQAAAAAgAAAA=</HashCode>
+      <FileName>TeachersWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Diplom.Models.ContingentEntities2" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAAGAAAAAAAAAEAAAAAAAAEgAAAAAAAAAAEAIAAAA=</HashCode>
+      <FileName>Models\Model1.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Employment" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAggAEAAAIBAAAAAAAAAAAAAAAABAACAAA=</HashCode>
+      <FileName>Models\Employment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Groups" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEIAACAEAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAQCAAA=</HashCode>
+      <FileName>Models\Groups.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Roles" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Roles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Specialities" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAgAAAAAAAAAAAAAAAAgAAAAAAAAACA=</HashCode>
+      <FileName>Models\Specialities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Statuses" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Statuses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Students" Collapsed="true">
+    <Position X="2.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ARQBEmAAACgAgACGIMCAAARIFBAQAAAEBAAgoAMADIA=</HashCode>
+      <FileName>Models\Students.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.sysdiagrams" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\sysdiagrams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Models.Users" Collapsed="true">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAGIAADAAggAAAAAAAAQABgAAAAACAAAQIAAAAAA=</HashCode>
+      <FileName>Models\Users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplom.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
