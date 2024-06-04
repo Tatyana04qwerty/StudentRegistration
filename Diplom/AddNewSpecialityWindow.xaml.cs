@@ -107,6 +107,7 @@ namespace Diplom
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+
             // Изменение существующей специальности
             else
             {

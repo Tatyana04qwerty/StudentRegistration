@@ -103,8 +103,8 @@ namespace Diplom
                 if (dpStart.SelectedDate < dpEnd.SelectedDate)
                 {
                     _list = _list.Where(x => x.EmploymentDate >= dpStart.SelectedDate && x.DateOfDismissal <= dpEnd.SelectedDate ||
-                    x.EmploymentDate >= dpStart.SelectedDate && (x.EmploymentDate < dpEnd.SelectedDate && x.DateOfDismissal >= dpEnd.SelectedDate || x.DateOfDismissal == null) ||
-                    x.EmploymentDate <= dpStart.SelectedDate && (x.DateOfDismissal > dpStart.SelectedDate && x.DateOfDismissal <= dpEnd.SelectedDate || x.DateOfDismissal == null)).ToList();
+                    x.EmploymentDate >= dpStart.SelectedDate && x.EmploymentDate <= dpEnd.SelectedDate ||
+                    x.EmploymentDate <= dpStart.SelectedDate && (x.DateOfDismissal > dpStart.SelectedDate || x.DateOfDismissal == null)).ToList();
 
                     dgEmployment.ItemsSource = _list;
                 }

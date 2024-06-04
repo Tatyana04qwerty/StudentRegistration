@@ -27,7 +27,7 @@ namespace Diplom
         private static Roles _role = new Roles();
         private List<Users> _listUsers = new List<Users>();
         private List<Roles> _listRoles = new List<Roles>();
-        private bool _isChecked = false;
+        int toCheck;
 
         public AddTeacherWindow()
         {
@@ -91,7 +91,6 @@ namespace Diplom
                             }
                             else
                             {
-                                _isChecked = true;
                                 lbFIO.Content = tbSurname.Text + " " + tbName.Text + " " + tbPatronymic.Text;
                                 SwitchLayers(nameof(logPass));
                                 SwitchLayers(nameof(FinishGegistrate));
@@ -99,7 +98,6 @@ namespace Diplom
                         }
                         else
                         {
-                            _isChecked = true;
                             lbFIO.Content = tbSurname.Text + " " + tbName.Text + " " + tbPatronymic.Text;
                             SwitchLayers(nameof(logPass));
                             SwitchLayers(nameof(FinishGegistrate));
@@ -213,8 +211,14 @@ namespace Diplom
                     resultPass += charsPass[rnd.Next(charsPass.Length)];
 
                 Random rnd1 = new Random();
-                for (int i = 0; i < 14; i++)
-                    resultLog += charsLog[rnd.Next(charsLog.Length)];
+                bool check = true;
+                while (check)
+                {
+                    for (int i = 0; i < 14; i++)
+                        resultLog += charsLog[rnd.Next(charsLog.Length)];
+                    toCheck = GetContext().Users.Where(x => x.Login.Equals(resultLog)).Count();
+                    if(toCheck == 0) check = false;
+                }
 
                 tbPassword.Text = resultPass;
                 tbLogin.Text = resultLog;

@@ -4,10 +4,6 @@
              xmlns:local="clr-namespace:Diplom"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Window">
-            <!--<Setter Property="MinHeight" Value="600"></Setter>
-            <Setter Property="MinWidth" Value="1000"></Setter>-->
-        </Style>
 
         <Style TargetType="Grid" x:Key="Back">
             <Setter Property="Background" Value="#F2F2F2"></Setter>

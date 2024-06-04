@@ -10,7 +10,6 @@
         <WrapPanel Margin="40 30 40 20" Orientation="Vertical">
             <WrapPanel>
                 <Label Name="lbFIO" FontSize="20" Content="Фамилия Имя Отчество" Margin="25"/>
-                <!--<Button Content="Изменить"/>-->
             </WrapPanel>
             <StackPanel Orientation="Horizontal">
                 <WrapPanel Orientation="Vertical" Margin="20 0">
@@ -20,18 +19,14 @@
                     <Label Content="Почта" Margin="0 10"/>
                 </WrapPanel>
                 <WrapPanel Orientation="Vertical">
-                    <TextBox x:Name="tbLogin" Text="{Binding Login}" Margin="0 7"/>
-                    <TextBox x:Name="tbPassword" Text="{Binding Password}" Margin="0 12"/>
-                    <TextBox x:Name="tbPhone" Text="{Binding Phone}" Margin="0 10"/>
-                    <TextBox x:Name="tbEmail" Text="{Binding Email}" Margin="0 7"/>
+                    <TextBox x:Name="tbLogin" Text="{Binding Login, Mode=OneTime}" Margin="0 7"/>
+                    <TextBox x:Name="tbPassword" Text="{Binding Password, Mode=OneTime}" Margin="0 12"/>
+                    <TextBox x:Name="tbPhone" Text="{Binding Phone, Mode=OneTime}" Margin="0 10"/>
+                    <TextBox x:Name="tbEmail" Text="{Binding Email, Mode=OneTime}" Margin="0 7"/>
                 </WrapPanel>
                 <Button Content="Сгенерировать пароль" VerticalAlignment="Top" Margin="20 40" Click="Generate_Click"/>
             </StackPanel>
             <Button Content="Сохранить" HorizontalAlignment="Left" Margin="5 25 0 0" Click="SaveProfile_Click"/>
-            <!--<WrapPanel Orientation="Vertical">
-                <Image x:Name="profilePhoto" Source="{Binding Photo}" Width="120" Height="120" Margin="10"/>
-                <Button Content="Изменить" Style="{StaticResource LittleButton}" />
-            </WrapPanel>-->
         </WrapPanel>
     </Grid>
 </Window>

@@ -33,14 +33,12 @@ namespace Diplom
     public partial class SetGroupWindow : Window
     {
         private static IList _listStudents = new List<Students>();
-        private static List<Students> _selectedStudentsList = new List<Students>();
         private static Groups _currentGroup = new Groups();
         private static Specialities _currentSpeciality = new Specialities();
 
         public SetGroupWindow(IList selectedItems)
         {
             InitializeComponent();
-            //_selectedStudentsList = selectedItems;
             _listStudents = selectedItems;
             UdLoad();
         }

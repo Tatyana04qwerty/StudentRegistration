@@ -26,6 +26,7 @@ namespace Diplom
         private static List<Employment> _listEmployment = new List<Employment>();
         private static Employment _lastE = new Employment();
         private static Employment _currentE = new Employment();
+        private static Employment _oldE = new Employment();
 
         public EmploymentWindow(Students current)
         {
@@ -72,7 +73,15 @@ namespace Diplom
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
+            //_oldE = GetContext().Employment.Where(x => x.StudentID == _current.ID).First();
+
+            UpLoad();
             SwitchLayers(nameof(addEmployment));
+
+            tbNewCompany.Clear();
+            tbNewLocation.Clear();
+            tbNewDescription.Clear();
+            dpNewEmploymentDate.SelectedDate = null;
         }
         #endregion
 
@@ -111,6 +120,7 @@ namespace Diplom
                             Description = tbNewDescription.Text,
                             EmploymentDate = dpNewEmploymentDate.SelectedDate.Value
                         };
+                        _current.IsEmployed = true;
 
                         GetContext().Employment.Add(item);
                         GetContext().SaveChanges();

@@ -65,58 +65,19 @@ namespace Diplom
                 else
                 {
                     item.TemporaryPassword = tbNewPass.Text;
-                    //if(item.Email != null)
-                    //{
-                    //    try
-                    //    {
-                    //        //MailAddress from = new MailAddress("collegekolomnatest@mail.ru", "ИС \"Колледж \"Коломна\"");
-                    //        MailAddress from = new MailAddress("tanchikiva142850@gmail.com", "ИС \"Колледж \"Коломна\"");
-                    //        MailAddress to = new MailAddress("testcollegekolomna@mail.ru", "TestToName");
-                    //        MailMessage myMail = new MailMessage(from, to)
-                    //        {
-                    //            Subject = "Восстановление пароля",
-                    //            SubjectEncoding = Encoding.UTF8,
-                    //            Body = "Ваш логин:" + Environment.NewLine + item.Login + Environment.NewLine + "Временный пароль:" + Environment.NewLine + tbNewPass.Text,
-                    //            BodyEncoding = Encoding.UTF8
-                    //        };
-
-                    //        SmtpClient mySmtpClient = new SmtpClient("smtp.mail.ru")
-                    //        {
-                    //            Port = 587,
-                    //            EnableSsl = true,
-                    //            UseDefaultCredentials = true,
-                    //            Credentials = new NetworkCredential(from.Address, "trustnobody142840"),
-                    //        };
-
-                    //        mySmtpClient.Send(myMail);
-                    //    }
-
-                    //    catch (SmtpException ex)
-                    //    {
-                    //        throw new ApplicationException
-                    //          ("Smtp исключение: " + ex.Message);
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-                    //        throw ex;
-                    //    }
-                    //}
-                    //else
-                    //{
-                        try
-                        {
-                            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                            var filePath = Path.Combine(desktopPath, $"{item.Surname}_временный_пароль.txt");
-                            StreamWriter sw = new StreamWriter(filePath);
-                            sw.WriteLine("Временный пароль");
-                            sw.WriteLine(tbNewPass.Text);
-                            sw.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Ошибка записи файла " + ex.Message);
-                        }
-                    //}
+                    try
+                    {
+                        var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                        var filePath = Path.Combine(desktopPath, $"{item.Surname}_временный_пароль.txt");
+                        StreamWriter sw = new StreamWriter(filePath);
+                        sw.WriteLine("Временный пароль");
+                        sw.WriteLine(tbNewPass.Text);
+                        sw.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка записи файла " + ex.Message);
+                    }
 
                     GetContext().SaveChanges();
                     MessageBox.Show("Временный пароль сгенерирован");

@@ -35,10 +35,10 @@
                             </WrapPanel>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
-                            <DatePicker x:Name="dpNewEmploymentDate" SelectedDate="{Binding EmploymentDate}" Margin="5"/>
-                            <TextBox x:Name="tbNewCompany" MaxLength="150" Text="{Binding Company}" Margin="5" ToolTip="Название организации"/>
-                            <TextBox x:Name="tbNewLocation" MaxLength="250" Text="{Binding Location}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5"/>
-                            <TextBox x:Name="tbNewDescription" Text="{Binding Description}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5" ToolTip="Деятельность организации, должность и иная информация"/>
+                            <DatePicker x:Name="dpNewEmploymentDate" Margin="5"/>
+                            <TextBox x:Name="tbNewCompany" MaxLength="150" Margin="5" ToolTip="Название организации"/>
+                            <TextBox x:Name="tbNewLocation" MaxLength="250" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5"/>
+                            <TextBox x:Name="tbNewDescription" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5" ToolTip="Деятельность организации, должность и иная информация"/>
                         </WrapPanel>
                     </WrapPanel>
                     <StackPanel Orientation="Vertical">
@@ -72,11 +72,11 @@
                             </WrapPanel>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
-                            <DatePicker x:Name="dpEmploymentDate" SelectedDate="{Binding EmploymentDate}" Margin="5"/>
-                            <DatePicker x:Name="dpDateOfDismissal" SelectedDate="{Binding DateOfDismissal}" Margin="5"/>
-                            <TextBox x:Name="tbCompany" MaxLength="150" Text="{Binding Company}" Margin="5" ToolTip="Название организации"/>
-                            <TextBox x:Name="tbLocation" MaxLength="250" Text="{Binding Location}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="50" Margin="5"/>
-                            <TextBox x:Name="tbDescription" Text="{Binding Description}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="50" Margin="5" ToolTip="Деятельность организации, должность и иная информация"/>
+                            <DatePicker x:Name="dpEmploymentDate" SelectedDate="{Binding EmploymentDate, Mode=OneTime}" Margin="5"/>
+                            <DatePicker x:Name="dpDateOfDismissal" SelectedDate="{Binding DateOfDismissal, Mode=OneTime}" Margin="5"/>
+                            <TextBox x:Name="tbCompany" MaxLength="150" Text="{Binding Company, Mode=OneTime}" Margin="5" ToolTip="Название организации"/>
+                            <TextBox x:Name="tbLocation" MaxLength="250" Text="{Binding Location, Mode=OneTime}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="50" Margin="5"/>
+                            <TextBox x:Name="tbDescription" Text="{Binding Description, Mode=OneTime}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="50" Margin="5" ToolTip="Деятельность организации, должность и иная информация"/>
                         </WrapPanel>
                     </WrapPanel>
                     <StackPanel Orientation="Vertical">

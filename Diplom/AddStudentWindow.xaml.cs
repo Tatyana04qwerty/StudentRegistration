@@ -136,6 +136,7 @@ namespace Diplom
                                     Gender = cbGender.Text,
                                     DateOfBirth = dpDateOfBirth.SelectedDate.Value.Date,
                                     Phone = tbPhone.Text,
+                                    Email = tbEmail.Text,
                                     Nationality = tbNationality.Text,
                                     IdentityDocument = tbIdentityDocument.Text,
                                     PassportSeries = tbPassportSeries.Text,

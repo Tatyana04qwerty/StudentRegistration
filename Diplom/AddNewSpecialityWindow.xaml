@@ -25,9 +25,9 @@
                     <Label Content="Аббревиатура специальности" Margin="0 45 0 0"/>
                 </WrapPanel>
                 <WrapPanel Orientation="Vertical">
-                    <Obselete:MaskedTextBox x:Name="tbCode" FontSize="15" MaxLength="10" Text="{Binding SpecialityCode}" Width="160" Height="23" Mask="00/00/00" Margin="5"/>
-                    <TextBox x:Name="tbName" MaxLength="150" Text="{Binding SpecialityName}" Width="160" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" Height="70" TextChanged="tbName_TextChanged" Margin="5"/>
-                    <TextBox x:Name="tbAbbrevaite" MaxLength="10" Text="{Binding AbbreviatedName}" Width="160" Margin="5"/>
+                    <Obselete:MaskedTextBox x:Name="tbCode" FontSize="15" MaxLength="10" Text="{Binding SpecialityCode, Mode=OneTime}" Width="160" Height="23" Mask="00/00/00" Margin="5"/>
+                    <TextBox x:Name="tbName" MaxLength="150" Text="{Binding SpecialityName, Mode=OneTime}" Width="160" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" Height="70" TextChanged="tbName_TextChanged" Margin="5"/>
+                    <TextBox x:Name="tbAbbrevaite" MaxLength="10" Text="{Binding AbbreviatedName, Mode=OneTime}" Width="160" Margin="5"/>
                 </WrapPanel>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">

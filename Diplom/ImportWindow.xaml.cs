@@ -38,12 +38,14 @@ namespace Diplom
 
         private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "EXCEL Files (*.xlsx)|*.xlsx|EXCEL Files 2003 (*.xls)|*.xls|All files (*.*)|*.*";
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "EXCEL Files (*.xlsx)|*.xlsx|EXCEL Files 2003 (*.xls)|*.xls|All files (*.*)|*.*"
+            };
             if (openFileDialog.ShowDialog() != true)
                 return;
 
-            DbGrig.ItemsSource = readFile(openFileDialog.FileName);
+            DbGrig.ItemsSource = ReadFile(openFileDialog.FileName);
         }
 
         private string GetDataGridCellInfo(int i, int j)
@@ -310,9 +312,11 @@ namespace Diplom
                             _currentStudents.TypeOfFinancing = "Бюджет";
                         }
                         _currentStudents.StatusID = 1;
+                        _currentStudents.IsEmployed = false;
                         GetContext().Students.Add(_currentStudents);
                         GetContext().SaveChanges();
                     }
+                    
                     MessageBox.Show("Студенты добавлены");
                     Hide();
                 }
@@ -330,7 +334,7 @@ namespace Diplom
             Hide();
         }
 
-        private DataView readFile(string fileNames)
+        private DataView ReadFile(string fileNames)
         {
             try
             {

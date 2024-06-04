@@ -347,6 +347,7 @@ namespace Diplom
                 CbFilterTypeOfFinancing1.Items.Add("Бюджет");
                 CbFilterTypeOfFinancing1.Items.Add("Договор");
             }
+
             // Обновление списка групп для классного руководителя
             if (CbFilterGroup1.Items.Count == 0)
             {
@@ -356,6 +357,12 @@ namespace Diplom
                     listFilterMyGroup.Add(group.GroupNumber.ToString());
                 }
                 CbFilterGroup1.ItemsSource = listFilterMyGroup;
+            }
+            if (CbFilterEmployment1.Items.Count == 0)
+            {
+                CbFilterEmployment1.Items.Insert(0, "Трудоустройство");
+                CbFilterEmployment1.Items.Add("Трудоустроен");
+                CbFilterEmployment1.Items.Add("Не трудоустроен");
             }
             #endregion
 
@@ -381,8 +388,9 @@ namespace Diplom
                     if (MessageBox.Show("Удалить группы, в которых учились удаленные студенты?", "Внимание",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-
+                        GetContext().Groups.RemoveRange(_listOutdatedGroups);
                     }
+                    GetContext().SaveChanges();
                 }
             }
 

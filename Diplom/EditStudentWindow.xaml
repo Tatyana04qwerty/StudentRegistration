@@ -31,9 +31,9 @@
                             </WrapPanel>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
-                            <TextBox x:Name="tbSurname" MaxLength="50" Text="{Binding Surname}" Margin="5"/>
-                            <TextBox x:Name="tbName" MaxLength="50" Text="{Binding Name}" Margin="5"/>
-                            <TextBox x:Name="tbPatronymic" MaxLength="50" Text="{Binding Patronymic}" Margin="5"/>
+                            <TextBox x:Name="tbSurname" MaxLength="50" Text="{Binding Surname, Mode=OneTime}" Margin="5"/>
+                            <TextBox x:Name="tbName" MaxLength="50" Text="{Binding Name, Mode=OneTime}" Margin="5"/>
+                            <TextBox x:Name="tbPatronymic" MaxLength="50" Text="{Binding Patronymic, Mode=OneTime}" Margin="5"/>
                         </WrapPanel>
                     </WrapPanel>
                     <WrapPanel Name="Contacts" Margin="0 30">
@@ -45,8 +45,8 @@
                             <Label Content="Почта"/>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
-                            <Obselete:MaskedTextBox x:Name="tbPhone" FontSize="15" Width="150" Height="23" Text="{Binding Phone}" Mask="+7(000)000-00-00" Margin="5"/>
-                            <TextBox x:Name="tbEmail" MaxLength="80" Text="{Binding Email}" Margin="5"/>
+                            <Obselete:MaskedTextBox x:Name="tbPhone" FontSize="15" Width="150" Height="23" Text="{Binding Phone, Mode=OneTime}" Mask="+7(000)000-00-00" Margin="5"/>
+                            <TextBox x:Name="tbEmail" MaxLength="80" Text="{Binding Email, Mode=OneTime}" Margin="5"/>
                         </WrapPanel>
                     </WrapPanel>
                 </WrapPanel>
@@ -81,13 +81,13 @@
                         <Label Content="ИНН"/>
                     </WrapPanel>
                     <WrapPanel Orientation="Vertical">
-                        <TextBox x:Name="tbPassportSeries" MaxLength="4" Text="{Binding PassportSeries}" Margin="5"/>
-                        <TextBox x:Name="tbPassportNumber" MaxLength="6" Text="{Binding PassportNumber}" Margin="5"/>
-                        <TextBox x:Name="tbIssuedBy" MaxLength="250" Text="{Binding IdentityDocument}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5"/>
-                        <DatePicker x:Name="dpDate" SelectedDate="{Binding DateOfIssue}" Margin="5"/>
-                        <TextBox x:Name="tbAddress" MaxLength="300" Text="{Binding PermanentRegistrationAddress}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5"/>
-                        <Obselete:MaskedTextBox x:Name="tbIIAN" FontSize="15" Width="150" Height="23" Text="{Binding IIAN}" Mask="000-000-000 00" Margin="5"/>
-                        <TextBox x:Name="tbITN" MaxLength="12" Text="{Binding ITN}" Margin="5"/>
+                        <TextBox x:Name="tbPassportSeries" MaxLength="4" Text="{Binding PassportSeries, Mode=OneTime}" Margin="5"/>
+                        <TextBox x:Name="tbPassportNumber" MaxLength="6" Text="{Binding PassportNumber, Mode=OneTime}" Margin="5"/>
+                        <TextBox x:Name="tbIssuedBy" MaxLength="250" Text="{Binding IdentityDocument, Mode=OneTime}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5"/>
+                        <DatePicker x:Name="dpDate" SelectedDate="{Binding DateOfIssue, Mode=OneTime}" Margin="5"/>
+                        <TextBox x:Name="tbAddress" MaxLength="300" Text="{Binding PermanentRegistrationAddress, Mode=OneTime}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Height="60" Margin="5"/>
+                        <Obselete:MaskedTextBox x:Name="tbIIAN" FontSize="15" Width="150" Height="23" Text="{Binding IIAN, Mode=OneTime}" Mask="000-000-000 00" Margin="5"/>
+                        <TextBox x:Name="tbITN" MaxLength="12" Text="{Binding ITN, Mode=OneTime}" Margin="5"/>
                     </WrapPanel>
                 </WrapPanel>
                 <WrapPanel Orientation="Vertical">
@@ -102,13 +102,13 @@
                         <WrapPanel Orientation="Vertical">
                             <ComboBox Name="cbIsOrphan" Margin="5"/>
                             <ComboBox Name="cbIsInvalid" SelectionChanged="cbIsInvalid_SelectionChanged" Margin="5"/>
-                            <TextBox x:Name="tbNozology" MaxLength="150" Width="220" Height="50" Text="{Binding CauseOfDisability}" Margin="5"/>
+                            <TextBox x:Name="tbNozology" MaxLength="150" Width="220" Height="50" Text="{Binding CauseOfDisability, Mode=OneTime}" Margin="5"/>
                         </WrapPanel>
                     </WrapPanel>
                     <WrapPanel Name="Notes" Margin="0 50">
                         <Label Content="Примечания" Width="136"/>
                         <WrapPanel Orientation="Vertical">
-                            <TextBox x:Name="tbNote" Text="{Binding Note}" Height="60" Width="220" VerticalScrollBarVisibility="Auto" Margin="5"/>
+                            <TextBox x:Name="tbNote" Text="{Binding Note, Mode=OneTime}" Height="60" Width="220" VerticalScrollBarVisibility="Auto" Margin="5"/>
                         </WrapPanel>
                     </WrapPanel>
                 </WrapPanel>
