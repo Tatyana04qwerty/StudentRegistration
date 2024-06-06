@@ -24,6 +24,7 @@ namespace Diplom
     public partial class AddStudentWindow : Window
     {
         private static Students _studentToCheck = new Students();
+        private static Specialities _specialityToCheck = new Specialities();
 
         public AddStudentWindow()
         {
@@ -104,9 +105,17 @@ namespace Diplom
             {
                 if (tbSurname.Text == "" || tbName.Text == "" || tbPatronymic.Text == "" || tbPhone.Text == "+7(___)___-__-__"
                     || tbPassportSeries.Text == "" || tbPassportNumber.Text == "" || tbIssuedBy.Text == ""
-                     || dpDate.SelectedDate == null || tbAddress.Text == "" || tbIIAN.Text == "" || dpDateOfBirth.SelectedDate == null)
+                     || dpDate.SelectedDate == null || tbAddress.Text == "" || tbIIAN.Text == "___-___-___ __" || dpDateOfBirth.SelectedDate == null)
                 {
                     MessageBox.Show("Заполните обязательные поля", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (tbPhone.Text.Contains("_"))
+                {
+                    MessageBox.Show("Номер телефона должен быть введен полностью", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (tbIIAN.Text.Contains("_"))
+                {
+                    MessageBox.Show("СНИЛС должен быть введен полностью", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
@@ -118,13 +127,69 @@ namespace Diplom
                     }
                     else
                     {
-                        if (tbEmail.Text != "")
+                        _specialityToCheck = GetContext().Specialities.Where(x => x.SpecialityName.Equals(cbSpeciality.Text)).FirstOrDefault();
+                        if (_specialityToCheck == null)
                         {
-                            Regex regex = new Regex(@"\w*\@\w*\.\w*");
-                            MatchCollection matches = regex.Matches(tbEmail.Text);
-                            if (matches.Count == 0)
+                            MessageBox.Show("Выберите из списка название существующей специальности", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        else
+                        {
+                            if (tbEmail.Text != "")
                             {
-                                MessageBox.Show("Неверный формат адреса почты", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                Regex regex = new Regex(@"\w*\@\w*\.\w*");
+                                MatchCollection matches = regex.Matches(tbEmail.Text);
+                                if (matches.Count == 0)
+                                {
+                                    MessageBox.Show("Неверный формат адреса почты", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                }
+                                else
+                                {
+                                    var item = new Students
+                                    {
+                                        Surname = tbSurname.Text,
+                                        Name = tbName.Text,
+                                        Patronymic = tbPatronymic.Text,
+                                        Gender = cbGender.Text,
+                                        DateOfBirth = dpDateOfBirth.SelectedDate.Value.Date,
+                                        Phone = tbPhone.Text,
+                                        Email = tbEmail.Text,
+                                        Nationality = tbNationality.Text,
+                                        IdentityDocument = tbIdentityDocument.Text,
+                                        PassportSeries = tbPassportSeries.Text,
+                                        PassportNumber = tbPassportNumber.Text,
+                                        IssuedBy = tbIssuedBy.Text,
+                                        DateOfIssue = dpDate.SelectedDate.Value.Date,
+                                        PermanentRegistrationAddress = tbAddress.Text,
+                                        IIAN = tbIIAN.Text,
+                                        ITN = tbITN.Text,
+                                        BasicEducation = tbBaseEducation.Text,
+                                        GPA = Convert.ToDouble(tbGPA.Text),
+                                        SpecialityID = cbSpeciality.SelectedIndex + 1,
+                                        TypeOfFinancing = cbTypeOfFinancing.Text,
+                                        FormOfStudy = cbFormOfStudy.Text,
+                                        IsEmployed = false,
+                                        StatusID = 1
+                                    };
+                                    if (cbIsOrphan.SelectedIndex == 0)
+                                        item.IsOrphan = true;
+                                    else item.IsOrphan = false;
+                                    if (cbIsInvalid.SelectedIndex == 0)
+                                        item.IsInvalid = true;
+                                    else item.IsInvalid = false;
+
+                                    if (tbNozology.Visibility == Visibility.Visible)
+                                    {
+                                        if (tbNozology.Text != "")
+                                        {
+                                            item.CauseOfDisability = tbNozology.Text;
+                                        }
+                                    }
+
+                                    GetContext().Students.Add(item);
+                                    GetContext().SaveChanges();
+                                    MessageBox.Show("Студент добавлен");
+                                    Hide();
+                                }
                             }
                             else
                             {
@@ -136,7 +201,6 @@ namespace Diplom
                                     Gender = cbGender.Text,
                                     DateOfBirth = dpDateOfBirth.SelectedDate.Value.Date,
                                     Phone = tbPhone.Text,
-                                    Email = tbEmail.Text,
                                     Nationality = tbNationality.Text,
                                     IdentityDocument = tbIdentityDocument.Text,
                                     PassportSeries = tbPassportSeries.Text,
@@ -161,65 +225,18 @@ namespace Diplom
                                     item.IsInvalid = true;
                                 else item.IsInvalid = false;
 
-                                if (tbNozology.IsEnabled)
-                                {
-                                    if (tbNozology.Text != "")
-                                    {
-                                        item.CauseOfDisability = tbNozology.Text;
-                                    }
-                                }
-
                                 GetContext().Students.Add(item);
                                 GetContext().SaveChanges();
                                 MessageBox.Show("Студент добавлен");
                                 Hide();
                             }
                         }
-                        else
-                        {
-                            var item = new Students
-                            {
-                                Surname = tbSurname.Text,
-                                Name = tbName.Text,
-                                Patronymic = tbPatronymic.Text,
-                                Gender = cbGender.Text,
-                                DateOfBirth = dpDateOfBirth.SelectedDate.Value.Date,
-                                Phone = tbPhone.Text,
-                                Nationality = tbNationality.Text,
-                                IdentityDocument = tbIdentityDocument.Text,
-                                PassportSeries = tbPassportSeries.Text,
-                                PassportNumber = tbPassportNumber.Text,
-                                IssuedBy = tbIssuedBy.Text,
-                                DateOfIssue = dpDate.SelectedDate.Value.Date,
-                                PermanentRegistrationAddress = tbAddress.Text,
-                                IIAN = tbIIAN.Text,
-                                ITN = tbITN.Text,
-                                BasicEducation = tbBaseEducation.Text,
-                                GPA = Convert.ToDouble(tbGPA.Text),
-                                SpecialityID = cbSpeciality.SelectedIndex + 1,
-                                TypeOfFinancing = cbTypeOfFinancing.Text,
-                                FormOfStudy = cbFormOfStudy.Text,
-                                IsEmployed = false,
-                                StatusID = 1
-                            };
-                            if (cbIsOrphan.SelectedIndex == 0)
-                                item.IsOrphan = true;
-                            else item.IsOrphan = false;
-                            if (cbIsInvalid.SelectedIndex == 0)
-                                item.IsInvalid = true;
-                            else item.IsInvalid = false;
-
-                            GetContext().Students.Add(item);
-                            GetContext().SaveChanges();
-                            MessageBox.Show("Студент добавлен");
-                            Hide();
-                        }
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Неверный формат данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

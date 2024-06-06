@@ -71,6 +71,21 @@ namespace Diplom
                         if (GetDataGridCellInfo(i, j) != "")
                         {
                             string[] fio = GetDataGridCellInfo(i, j).Split(' ');
+                            if (fio[0].Length > 50)
+                            {
+                                MessageBox.Show($"Фамилия превышает допустимое количество символов: 50\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            if (fio[0].Length > 50)
+                            {
+                                MessageBox.Show($"Имя превышает допустимое количество символов: 50\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            if (fio[0].Length > 50)
+                            {
+                                MessageBox.Show($"Отчество превышает допустимое количество символов: 50\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
                             _currentStudents.Surname = fio[0];
                             _currentStudents.Name = fio[1];
                             _currentStudents.Patronymic = fio[2];
@@ -83,7 +98,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.Gender = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 10)
+                            {
+                                MessageBox.Show($"Пол превышает допустимое количество символов: 10\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.Gender = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -103,7 +124,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.Nationality = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 90)
+                            {
+                                MessageBox.Show($"Гражданство превышает допустимое количество символов: 90\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.Nationality = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -121,6 +148,13 @@ namespace Diplom
                                 if (MessageBox.Show($"Такой студент уже числится в базе (Строка {i + 1}). Прервать операцию добавления?", "Внимание",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                                     break;
+                                else
+                                    continue;
+
+                            }
+                            else if (GetDataGridCellInfo(i, j).Length > 16)
+                            {
+                                MessageBox.Show($"Телефон превышает допустимое количество символов: 16\n(Столбец{j + 1} строка {i + 1})");
                                 continue;
                             }
                         }
@@ -132,7 +166,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.Email = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 80)
+                            {
+                                MessageBox.Show($"Почта превышает допустимое количество символов: 80\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.Email = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -141,7 +181,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.IdentityDocument = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 25)
+                            {
+                                MessageBox.Show($"ДУЛ превышает допустимое количество символов: 25\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.IdentityDocument = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -151,7 +197,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.PassportSeries = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 4)
+                            {
+                                MessageBox.Show($"Серия паспорта превышает допустимое количество символов: 4\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.PassportSeries = GetDataGridCellInfo(i, j).Replace(" ", "");
                         }
                         else
                         {
@@ -161,7 +213,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.PassportNumber = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 6)
+                            {
+                                MessageBox.Show($"Номер паспорта превышает допустимое количество символов: 6\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.PassportNumber = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -171,7 +229,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.IssuedBy = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 250)
+                            {
+                                MessageBox.Show($"Отдел выдачи паспорта превышает допустимое количество символов: 250\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.IssuedBy = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -191,7 +255,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.PermanentRegistrationAddress = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 300)
+                            {
+                                MessageBox.Show($"Адрес превышает допустимое количество символов: 300\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.PermanentRegistrationAddress = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -201,7 +271,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.IIAN = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 14)
+                            {
+                                MessageBox.Show($"СНИЛС превышает допустимое количество символов: 14\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.IIAN = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
@@ -211,7 +287,13 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.ITN = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Replace(" ", "").Length > 12)
+                            {
+                                MessageBox.Show($"ИНН превышает допустимое количество символов: 12\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.ITN = GetDataGridCellInfo(i, j).Replace(" ", "");
                         }
                         else
                         {
@@ -229,7 +311,7 @@ namespace Diplom
                             continue;
                         }
                         j++;
-                        if (GetDataGridCellInfo(i, j) != "")
+                        if (GetDataGridCellInfo(i, j).Replace(" ", "") != "")
                         {
                             if (GetDataGridCellInfo(i, j) == "Да")
                                 _currentStudents.IsOrphan = true;
@@ -241,7 +323,7 @@ namespace Diplom
                             _currentStudents.IsOrphan = false;
                         }
                         j++;
-                        if (GetDataGridCellInfo(i, j) != "")
+                        if (GetDataGridCellInfo(i, j).Replace(" ", "") != "")
                         {
                             if(GetDataGridCellInfo(i, j) == "Да")
                                 _currentStudents.IsInvalid = true;
@@ -259,7 +341,13 @@ namespace Diplom
                         }
                         else
                         {
-                            _currentStudents.CauseOfDisability = null;
+                            if (GetDataGridCellInfo(i, j).Length > 150)
+                            {
+                                MessageBox.Show($"Нозологическая группа превышает допустимое количество символов: 150\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.CauseOfDisability = null;
                         }
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
@@ -284,27 +372,45 @@ namespace Diplom
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.FormOfStudy = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 15)
+                            {
+                                MessageBox.Show($"Форма обучения превышает допустимое количество символов: 15\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.FormOfStudy = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
                             MessageBox.Show($"Нет данных о форме обучения (Столбец{j + 1} строка {i + 1}). Присвоено: Бюджет");
-                            _currentStudents.FormOfStudy = "Бюджет";
+                            _currentStudents.FormOfStudy = "Очная";
                         }
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.BasicEducation = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 40)
+                            {
+                                MessageBox.Show($"Базовое образование превышает допустимое количество символов: 40\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.BasicEducation = GetDataGridCellInfo(i, j);
                         }
                         else
                         {
-                            MessageBox.Show($"Нет данных о форме обучения (Столбец{j + 1} строка {i + 1}). Присвоено: Основное общее (9 классов)");
+                            MessageBox.Show($"Нет данных о базовом образовании (Столбец{j + 1} строка {i + 1}). Присвоено: Основное общее (9 классов)");
                             _currentStudents.BasicEducation = "Основное общее (9 классов)";
                         }
                         j++;
                         if (GetDataGridCellInfo(i, j) != "")
                         {
-                            _currentStudents.TypeOfFinancing = GetDataGridCellInfo(i, j);
+                            if (GetDataGridCellInfo(i, j).Length > 15)
+                            {
+                                MessageBox.Show($"Вид финансирования превышает допустимое количество символов: 15\n(Столбец{j + 1} строка {i + 1})");
+                                continue;
+                            }
+                            else
+                                _currentStudents.TypeOfFinancing = GetDataGridCellInfo(i, j);
                         }
                         else
                         {

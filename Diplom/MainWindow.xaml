@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Diplom"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="Авторизация" Height="800" Width="1800">
+        Title="Авторизация" Height="800" Width="1800" Closing="Window_Closing">
     <Grid Style="{StaticResource Back}">
         <Image Source="Resources\img\logo.png" Opacity="0.4" VerticalAlignment="Top" HorizontalAlignment="Left" Height="600"/>
         <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">

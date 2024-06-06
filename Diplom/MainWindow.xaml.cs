@@ -96,5 +96,14 @@ namespace Diplom
             tbPassword.Visibility = Visibility.Collapsed;
             imgVisibility.Source = new BitmapImage(new Uri("/Resources/icons/iconVisibleF.png", UriKind.RelativeOrAbsolute));
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите завершить работу в программе?", "Внимание",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

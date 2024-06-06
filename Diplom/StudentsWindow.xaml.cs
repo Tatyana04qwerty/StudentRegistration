@@ -68,7 +68,7 @@ namespace Diplom
         {
             _listGroups = GetContext().Groups.ToList();
             _listOutdatedGroups = _listGroups.Where(x => x.GroupCourse > 10).ToList();
-            _listMyGroups = GetContext().Groups.Where(x => x.FormMaster == _currentUser.ID).ToList();
+            _listMyGroups = GetContext().Groups.Where(x => x.FormMaster == _currentUser.ID).OrderByDescending(x => x.GroupNumber).ToList();
             _listSpecialities = GetContext().Specialities.ToList();
             tbSearch.PreviewTextInput += new TextCompositionEventHandler(textBoxText_PreviewTextInput);
             tbSearch1.PreviewTextInput += new TextCompositionEventHandler(textBoxText_PreviewTextInput);

@@ -58,7 +58,7 @@ namespace Diplom
         {
             try
             {
-                if (tbGroup.Text != "")
+                if (tbGroup.Text != "" && tbGroup.Text.Length == 5)
                 {
                     _currentGroup = GetContext().Groups.Where(x => x.GroupNumber.Equals(tbGroup.Text)).FirstOrDefault();
                     int k = 0;
@@ -132,8 +132,10 @@ namespace Diplom
                         }
                     }
                 }
-                else
+                else if (tbGroup.Text == "")
                     MessageBox.Show("Заполните поле с номером группы", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                else
+                    MessageBox.Show("Номер группы должен содержать 5 цифр.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex)
             {

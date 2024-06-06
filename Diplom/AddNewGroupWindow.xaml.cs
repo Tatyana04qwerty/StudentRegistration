@@ -69,14 +69,14 @@ namespace Diplom
                 {
                     if (tbName.Text == "")
                     {
-                        MessageBox.Show("Заполните поле номера группы");
+                        MessageBox.Show("Заполните поле номера группы", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
-                    else
+                    else if (tbName.Text.Length == 5)
                     {
                         _groupToCheck = GetContext().Groups.Where(x => x.GroupNumber == tbName.Text).FirstOrDefault();
                         if (_groupToCheck != null)
                         {
-                            MessageBox.Show($"Такая группа уже существует", "Внимание");
+                            MessageBox.Show($"Такая группа уже существует", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                         else
                         {
@@ -90,6 +90,10 @@ namespace Diplom
                             MessageBox.Show("Группа сохранена");
                             Hide();
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Номер группы должен содержать 5 цифр.\nПодробнее в справке в разделе Добавление и редактирование групп - Добавление групп", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 catch (Exception ex)
@@ -107,7 +111,7 @@ namespace Diplom
                     {
                         MessageBox.Show("Заполните поле номера группы");
                     }
-                    else
+                    else if (tbName.Text.Length == 5)
                     {
                         _groupToCheck = GetContext().Groups.Where(x => x.GroupNumber == tbName.Text).FirstOrDefault();
                         if (_groupToCheck != null)
@@ -123,6 +127,10 @@ namespace Diplom
                             MessageBox.Show("Группа изменена");
                             Hide();
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Номер группы должен содержать 5 цифр.\nПодробнее в справке в разделе Добавление и редактирование групп - Добавление групп", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 catch (Exception ex)

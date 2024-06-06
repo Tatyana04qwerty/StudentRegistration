@@ -85,9 +85,9 @@ namespace Diplom
             }
             if (CbFilterGroup.Items.Count == 0)
             {
+                listFilterGroup = new List<string>();
                 foreach (var group in _listCurrentGroups)
                 {
-                    listFilterGroup = new List<string>();
                     listFilterGroup.Add(group.GroupNumber.ToString());
                 }
                 CbFilterGroup.ItemsSource = listFilterGroup;
@@ -278,7 +278,7 @@ namespace Diplom
 
         public void Update()
         {
-            _list = GetContext().Students.Where(x => x.StatusID == 1).ToList();
+            _list = GetContext().Students.Where(x => x.StatusID == 1 && x.GroupID != null).ToList();
 
             if (CbSortField.SelectedIndex > 0)
             {

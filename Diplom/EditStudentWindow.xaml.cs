@@ -113,11 +113,19 @@ namespace Diplom
             try
             {
                 //var item = _current;
-                if (tbSurname.Text == "" || tbName.Text == "" || tbPatronymic.Text == "" || tbPhone.Text == ""
+                if (tbSurname.Text == "" || tbName.Text == "" || tbPatronymic.Text == "" || tbPhone.Text == "+7(___)___-__-__"
                     || tbPassportSeries.Text == "" || tbPassportNumber.Text == "" || tbIssuedBy.Text == ""
-                     || dpDate.Text == "" || tbAddress.Text == "" || tbIIAN.Text == "")
+                     || dpDate.Text == "" || tbAddress.Text == "" || tbIIAN.Text == "___-___-___ __")
                 {
                     MessageBox.Show("Заполните обязательные поля", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (tbPhone.Text.Contains("_"))
+                {
+                    MessageBox.Show("Номер телефона должен быть введен полностью", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (tbIIAN.Text.Contains("_"))
+                {
+                    MessageBox.Show("СНИЛС должен быть введен полностью", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
