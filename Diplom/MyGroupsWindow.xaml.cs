@@ -67,8 +67,6 @@ namespace Diplom
                 CbSortField.Items.Add("Фамилия");
                 CbSortField.Items.Add("Дата рождения");
                 CbSortField.Items.Add("Средний балл");
-                CbSortField.Items.Add("Группа");
-                CbSortField.Items.Add("Курс");
             }
             if (CbFilterGender.Items.Count == 0)
             {
@@ -147,8 +145,6 @@ namespace Diplom
                 CbSortFieldGraduates.Items.Add("Фамилия");
                 CbSortFieldGraduates.Items.Add("Дата рождения");
                 CbSortFieldGraduates.Items.Add("Средний балл");
-                CbSortFieldGraduates.Items.Add("Группа");
-                CbSortFieldGraduates.Items.Add("Курс");
             }
             if (CbFilterGenderGraduates.Items.Count == 0)
             {
@@ -222,12 +218,16 @@ namespace Diplom
         {
             btnAllStudents.Click += (s, e) =>
             {
+                Clear();
+                dgGraduates.SelectedItems.Clear();
                 SwitchLayers(nameof(studentsGrid));
                 Update();
             };
 
             btnGraduates.Click += (s, e) =>
             {
+                ClearGraduates();
+                dgStudents.SelectedItems.Clear();
                 SwitchLayers(nameof(graduatesGrid));
                 UpdateGraduates();
             };
@@ -260,7 +260,7 @@ namespace Diplom
 
         // Обучающиеся группы
         #region
-        private void Clear_Click(object sender, RoutedEventArgs e)
+        private void Clear()
         {
             CbSortDir.SelectedIndex = 0;
             CbSortField.SelectedIndex = 0;
@@ -272,7 +272,11 @@ namespace Diplom
             CbFilterEmployment.SelectedIndex = 0;
 
             tbSearch.Clear();
+        }
 
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
             Update();
         }
 
@@ -301,18 +305,6 @@ namespace Diplom
                             _list = _list.OrderBy(p => p.GPA).ToList();
                         if (CbSortDir.SelectedIndex == 2)
                             _list = _list.OrderByDescending(p => p.GPA).ToList();
-                        break;
-                    case 4:
-                        if (CbSortDir.SelectedIndex == 1)
-                            _list = _list.OrderBy(p => p.Groups.GroupNumber).ToList();
-                        if (CbSortDir.SelectedIndex == 2)
-                            _list = _list.OrderByDescending(p => p.Groups.GroupNumber).ToList();
-                        break;
-                    case 5:
-                        if (CbSortDir.SelectedIndex == 1)
-                            _list = _list.OrderBy(p => p.Course).ToList();
-                        if (CbSortDir.SelectedIndex == 2)
-                            _list = _list.OrderByDescending(p => p.Course).ToList();
                         break;
                 }
             }
@@ -478,10 +470,12 @@ namespace Diplom
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = "Document";
-            dlg.DefaultExt = ".xlsx";
-            dlg.Filter = "Excel Worksheets (.xlsx)|*.xlsx";
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
+            {
+                FileName = "Document",
+                DefaultExt = ".xlsx",
+                Filter = "Excel Worksheets (.xlsx)|*.xlsx"
+            };
 
             bool? result = dlg.ShowDialog();
 
@@ -603,10 +597,8 @@ namespace Diplom
 
         // Выпутившиеся группы
         #region
-        private void ClearGraduates_Click(object sender, RoutedEventArgs e)
+        private void ClearGraduates()
         {
-            _listGraduatedGroups = _listGraduatedGroups.ToList();
-
             CbSortDirGraduates.SelectedIndex = 0;
             CbSortFieldGraduates.SelectedIndex = 0;
 
@@ -617,7 +609,11 @@ namespace Diplom
             CbFilterEmploymentGraduates.SelectedIndex = 0;
 
             tbSearchGraduates.Clear();
+        }
 
+        private void ClearGraduates_Click(object sender, RoutedEventArgs e)
+        {
+            ClearGraduates();
             UpdateGraduates();
         }
 
@@ -636,28 +632,16 @@ namespace Diplom
                             _listGraduates = _listGraduates.OrderByDescending(p => p.Surname).ToList();
                         break;
                     case 2:
-                        if (CbSortDir.SelectedIndex == 1)
+                        if (CbSortDirGraduates.SelectedIndex == 1)
                             _listGraduates = _listGraduates.OrderBy(p => p.DateOfBirth).ToList();
-                        if (CbSortDir.SelectedIndex == 2)
+                        if (CbSortDirGraduates.SelectedIndex == 2)
                             _listGraduates = _listGraduates.OrderByDescending(p => p.DateOfBirth).ToList();
                         break;
                     case 3:
-                        if (CbSortDir.SelectedIndex == 1)
+                        if (CbSortDirGraduates.SelectedIndex == 1)
                             _listGraduates = _listGraduates.OrderBy(p => p.GPA).ToList();
-                        if (CbSortDir.SelectedIndex == 2)
+                        if (CbSortDirGraduates.SelectedIndex == 2)
                             _listGraduates = _listGraduates.OrderByDescending(p => p.GPA).ToList();
-                        break;
-                    case 4:
-                        if (CbSortDir.SelectedIndex == 1)
-                            _listGraduates = _listGraduates.OrderBy(p => p.Groups.GroupNumber).ToList();
-                        if (CbSortDir.SelectedIndex == 2)
-                            _listGraduates = _listGraduates.OrderByDescending(p => p.Groups.GroupNumber).ToList();
-                        break;
-                    case 5:
-                        if (CbSortDir.SelectedIndex == 1)
-                            _listGraduates = _listGraduates.OrderBy(p => p.Course).ToList();
-                        if (CbSortDir.SelectedIndex == 2)
-                            _listGraduates = _listGraduates.OrderByDescending(p => p.Course).ToList();
                         break;
                 }
             }

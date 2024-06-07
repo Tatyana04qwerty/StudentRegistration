@@ -302,8 +302,6 @@ namespace Diplom
                 CbSortField1.Items.Add("Фамилия");
                 CbSortField1.Items.Add("Дата рождения");
                 CbSortField1.Items.Add("Средний балл");
-                CbSortField1.Items.Add("Группа");
-                CbSortField1.Items.Add("Курс");
             }
 
             if (CbFilterTown1.Items.Count == 0)
@@ -814,18 +812,6 @@ namespace Diplom
                         if (CbSortDir1.SelectedIndex == 2)
                             _listMy = _listMy.OrderByDescending(p => p.GPA).ToList();
                         break;
-                    case 4:
-                        if (CbSortDir1.SelectedIndex == 1)
-                            _listMy = _listMy.OrderBy(p => p.Groups.GroupNumber).ToList();
-                        if (CbSortDir1.SelectedIndex == 2)
-                            _listMy = _listMy.OrderByDescending(p => p.Groups.GroupNumber).ToList();
-                        break;
-                    case 5:
-                        if (CbSortDir1.SelectedIndex == 1)
-                            _listMy = _listMy.OrderBy(p => p.Course).ToList();
-                        if (CbSortDir1.SelectedIndex == 2)
-                            _listMy = _listMy.OrderByDescending(p => p.Course).ToList();
-                        break;
                 }
             }
             if (CbFilterTown1.SelectedIndex > 0)
@@ -948,6 +934,7 @@ namespace Diplom
         {
             btnAllStudents.Click += (s, e) =>
             {
+                Clear();
                 dgMyStudents.SelectedItems.Clear();
                 dgGraduates.SelectedItems.Clear();
                 SwitchLayers(nameof(studentsGrid));
@@ -956,6 +943,7 @@ namespace Diplom
 
             btnGraduates.Click += (s, e) =>
             {
+                ClearGraduates();
                 dgMyStudents.SelectedItems.Clear();
                 dgStudents.SelectedItems.Clear();
                 SwitchLayers(nameof(graduatesGrid));
@@ -964,6 +952,7 @@ namespace Diplom
 
             btnMyStudents.Click += (s, e) =>
             {
+                ClearMyGroup();
                 dgStudents.SelectedItems.Clear();
                 dgGraduates.SelectedItems.Clear();
                 SwitchLayers(nameof(myGroupsGrid));
@@ -1482,7 +1471,7 @@ namespace Diplom
             Update();
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
+        private void Clear()
         {
             CbSortDir.SelectedIndex = 0;
             CbSortField.SelectedIndex = 0;
@@ -1500,7 +1489,11 @@ namespace Diplom
             CbFilterIsInvalid.SelectedIndex = 0;
 
             tbSearch.Clear();
+        }
 
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
             Update();
         }
         #endregion
@@ -1540,7 +1533,7 @@ namespace Diplom
             UpdateMyGroup();
         }
 
-        private void ClearMyGroup_Click(object sender, RoutedEventArgs e)
+        private void ClearMyGroup()
         {
             CbSortDir1.SelectedIndex = 0;
             CbSortField1.SelectedIndex = 0;
@@ -1551,7 +1544,11 @@ namespace Diplom
             CbFilterTypeOfFinancing1.SelectedIndex = 0;
 
             tbSearch1.Clear();
+        }
 
+        private void ClearMyGroup_Click(object sender, RoutedEventArgs e)
+        {
+            ClearMyGroup();
             Update();
         }
         #endregion
@@ -1586,7 +1583,7 @@ namespace Diplom
             }
         }
 
-        private void ClearGraduates_Click(object sender, RoutedEventArgs e)
+        private void ClearGraduates()
         {
             CbSortDir2.SelectedIndex = 0;
             CbSortField2.SelectedIndex = 0;
@@ -1600,8 +1597,13 @@ namespace Diplom
             CbFilterTypeOfFinancing2.SelectedIndex = 0;
             CbFilterIsOrphan2.SelectedIndex = 0;
             CbFilterIsInvalid2.SelectedIndex = 0;
-            tbSearch2.Clear();
 
+            tbSearch2.Clear();
+        }
+
+        private void ClearGraduates_Click(object sender, RoutedEventArgs e)
+        {
+            ClearGraduates();
             UpdateGraduates();
         }
 
