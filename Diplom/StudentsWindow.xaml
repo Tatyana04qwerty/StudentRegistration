@@ -182,7 +182,7 @@
                                         <WrapPanel>
                                             <TextBlock Text="{Binding IfInvalid}" FontSize="12"/>
                                             <TextBlock Text=" " FontSize="12"/>
-                                            <TextBlock Text="{Binding ПричинаИнвалидности}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                            <TextBlock Text="{Binding CauseOfDisability}" TextWrapping="WrapWithOverflow" FontSize="12"/>
                                         </WrapPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -418,7 +418,7 @@
                                         <WrapPanel>
                                             <TextBlock Text="{Binding IfInvalid}" FontSize="12"/>
                                             <TextBlock Text=" " FontSize="12"/>
-                                            <TextBlock Text="{Binding ПричинаИнвалидности}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                            <TextBlock Text="{Binding CauseOfDisability}" TextWrapping="WrapWithOverflow" FontSize="12"/>
                                         </WrapPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -644,7 +644,7 @@
                                         <WrapPanel>
                                             <TextBlock Text="{Binding IfInvalid}" FontSize="12"/>
                                             <TextBlock Text=" " FontSize="12"/>
-                                            <TextBlock Text="{Binding ПричинаИнвалидности}" TextWrapping="WrapWithOverflow" FontSize="12"/>
+                                            <TextBlock Text="{Binding CauseOfDisability}" TextWrapping="WrapWithOverflow" FontSize="12"/>
                                         </WrapPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
